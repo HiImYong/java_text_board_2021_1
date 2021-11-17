@@ -1,6 +1,7 @@
 package com.yyj.exam.board;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -8,6 +9,8 @@ public class Main {
     // write your code here
 
     Scanner scan = new Scanner(System.in); //시스템인 : 키보드를 받아낸다
+    int articlesLastId = 0;
+
 
       System.out.println("==게시판 v 0.1==");
       System.out.println("==프로그램 시작==");
@@ -21,8 +24,22 @@ public class Main {
           String title = scan.next();
           System.out.print("내용 : ");
           String body = scan.next();
-          int id=1;
-          System.out.printf("%d번 게시물이 등록되었습니다.\n",id);
+          articlesLastId = articlesLastId+1;
+          int tempId = articlesLastId;
+
+
+          Aritcle article = new Aritcle();
+          article.id = tempId;
+          article.title = title;
+          article.body = body;
+
+          System.out.println("생성된 게시물 객체 : " + article);
+
+
+
+          System.out.printf("%d번 게시물이 등록되었습니다.\n",article.id);
+
+
         }
 
         else if(cmd.equals("exit")){
@@ -37,4 +54,14 @@ public class Main {
 
       scan.close();
   }
+}
+
+
+class Aritcle{
+
+  int id;
+  String title;
+  String body;
+
+
 }
